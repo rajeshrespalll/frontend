@@ -44,7 +44,7 @@ const Create = () => {
     return (
 
         <div className="container p-5">
-            <Nav title="create component" name="124" />
+            <Nav title="Create Product" name="124" />
             <h1>CREATE PRODUCT</h1>
             <br />
             <form onSubmit={handleSubmit}>

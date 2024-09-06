@@ -12,6 +12,12 @@ const Nav = ({title, name}) => {
                 <li className="nav-item pr-3 pt-3 pb-3">
                     <Link to="/create">Create</Link>
                 </li>
+                <li className="nav-item pr-3 pt-3 pb-3">
+                    <Link to="/login">Login</Link>
+                </li>
+                <li className="nav-item pr-3 pt-3 pb-3">
+                    <Link to="/register">Register</Link>
+                </li>
                 <h1>{title}</h1>
                 {/* <h1>{props.name}</h1> */}
                  {(name === undefined) ? <h1>no name</h1> : <h2>{name}</h2>} 
