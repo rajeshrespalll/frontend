@@ -23,8 +23,12 @@ const SingleProduct = () => {
             <Nav />
             <br />
             <h1>{product.name}</h1>
-            <p classname="lead">{product.description.substring(0, 100)}</p>
+            <p className="lead">{product.description}</p>
             <p>Price: ${product.price}</p>
+            <p>
+               Published on{' '}
+                <span className="badge">{new Date(product.createdAt).toLocaleString()}</span>
+            </p>
         </div>
     );
 };

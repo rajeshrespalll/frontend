@@ -16,6 +16,25 @@ import { Link } from 'react-router-dom';
     })
     .catch(error => alert('Error fetching products'));
   };
+
+  const deleteConfirm = slug => {
+    let answer = window.confirm('Are you sure you want to delete this product?');
+    if (answer) {
+      deleteProduct(slug);
+    }
+  };
+
+  const deleteProduct = slug => {
+    // console.log('delete', slug, ' post');
+    axios
+      .delete(`${process.env.REACT_APP_API}/product/${slug}`)
+      .then(response => {
+        alert(response.data.message);
+        fetchProducts();
+      })
+      .catch(error => alert('Error deleting product'));
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []); 
@@ -34,6 +53,15 @@ import { Link } from 'react-router-dom';
               <p className="lead">{product.description.substring(0, 100)}</p>
               <p>Price: ${product.price}</p>
             </div>
+            <Link to={`/product/update/${product.slug}`} className="btn btn-sm btn-outline-warning">
+            Update
+            </Link>
+            <button
+            onClick={() => deleteConfirm(product.slug)}
+            className="btn btn-sm btn-outline-danger ml-1"
+            >
+            Delete
+            </button>
           </div>
 
           )) : <h1>No products</h1>}
