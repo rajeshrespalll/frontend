@@ -1,5 +1,6 @@
 // src/components/Login.js
 import React, { useState } from 'react';
+import Nav from '../Nav';
 import axios from 'axios';
 import { authenticate } from '../helpers/auth';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Login = () => {
             const response = await axios.post(`${process.env.REACT_APP_API}/login`, { email, password });
             
             authenticate(response.data, () => {
-                navigate('/dashboard'); // Redirect after successful login
+                navigate('/'); // Redirect after successful login
             });
         } catch (error) {
             console.error('Login error:', error.response.data);
@@ -24,6 +25,10 @@ const Login = () => {
     };
 
     return (
+        <div className="container p-5">
+        <Nav title="Login Page" name="124" />
+            <h1>Login</h1>
+            <br />
         <form onSubmit={handleSubmit}>
             <input
                 type="email"
@@ -39,6 +44,7 @@ const Login = () => {
             />
             <button type="submit">Login</button>
         </form>
+        </div>
     );
 };
 

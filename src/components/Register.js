@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { register } from '../helpers/auth';
 import { useNavigate } from 'react-router-dom';
+import Nav from '../Nav';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -17,7 +18,7 @@ const Register = () => {
             // Call the register helper function
             await register(name, email, password, () => {
                 // On successful registration, redirect to the homepage
-                navigate('/');
+                navigate('/login');
             });
         } catch (err) {
             // Handle registration errors
@@ -26,6 +27,10 @@ const Register = () => {
     };
 
     return (
+        <div className="container p-5">
+        <Nav title="Register Page" name="124" />
+            <h1>Register new user</h1>
+            <br />
         <form onSubmit={handleSubmit}>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <input
@@ -51,6 +56,7 @@ const Register = () => {
             />
             <button type="submit">Register</button>
         </form>
+        </div>
     );
 };
 
